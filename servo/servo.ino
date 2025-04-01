@@ -15,6 +15,7 @@ pinMode(buttonPin, INPUT);
 
 void loop() {
  //this part of the code is for how much the servo rotates
+ //if button pressed servo spins, if not pushed then servo reverts back
  if(digitalRead(buttonPin) == HIGH) {
   myservo.write(360);
  }else {
