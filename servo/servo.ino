@@ -1,3 +1,4 @@
+
 #include <Servo.h>
 
 Servo myservo;
@@ -11,6 +12,7 @@ pinMode(buttonPin, INPUT);
 }
 
 void loop() {
+ //this part of the code is for how much the servo rotates
  if(digitalRead(buttonPin) == HIGH) {
   myservo.write(360);
  }else {
