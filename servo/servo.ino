@@ -1,18 +1,20 @@
+/*
+ La Llorona
 
-
+Team Name: Team Spooky Beans
+Team Members: Vanessa Flores and Jocelyne Partida
+Description: For this code we added 4 triggers and 5 different buttons. For servo 1,2, and 3 we made servo
+spin 180 degrees. For servo 4 we created 2 different button pins in order for button 4 spin from 110 degrees 
+to 60 when pressed, and when button 5 is pressed it spins from 150 to 60 degrees.
+*/
 
 #include <Servo.h>
 
+//Variables
 Servo servo1;
 Servo servo2;
 Servo servo3;
 Servo servo4;
-
-int servo1Angle = 0;
-int servo2Angle = 0;
-int servo3Angle = 0;
-int servo4Angle = 0;
-
 
 
 const int buttonPin = 8;
@@ -22,14 +24,11 @@ const int buttonPin4 = 4;
 const int buttonPin5 = 3;
 
 
-unsigned long currentTime;
-unsigned prevTime = 0;
-int timerlength = 100;
-
 void setup() {
 
 Serial.begin(9600);
 
+ //servo and button set up
 servo2.attach(7);
 servo1.attach(9); 
 servo3.attach(10);
@@ -40,15 +39,10 @@ pinMode(buttonPin3, INPUT);
 pinMode(buttonPin4, INPUT);
 pinMode(buttonPin5, INPUT);
 
-servo1.write(servo1Angle);
-servo2.write(servo2Angle);
-servo3.write(servo3Angle);
-servo4.write(servo4Angle);
-
 
 }
 
-
+//servo 2 spin 180 degrees
 void loop() {
 if(digitalRead(buttonPin2) == HIGH) {
 servo2.write(180);
@@ -56,39 +50,14 @@ servo2.write(180);
   servo2.write(0);
  }
 
-
-// currentTime = millis();
-//   Serial.println(buttonPin5);
-// prevTime = currentTime;
-
-
- 
-// // }
-//  if(digitalRead(buttonPin2) == HIGH) {
-//   if (currentTime - prevTime > timerlength){
-//     servo2Angle = 70; 
-//     servo2Angle += 70;
-//    } else{}
-    
-//   // servo2.write(70);
-//   // //  prevTime = currentTime;
-//   // delay(150);
-//   // servo2.write(110);
-// //  delay(150);
-// //  }else{ 
-// //   servo2.write(0);
-
-//  }
-// prevTime = currentTime;
-// Serial.print(currentTime /100);
-
-
-
+ //servo 1 spins 180 degrees
  if (digitalRead(buttonPin) == HIGH) {
   servo1.write(180);
  }else {
   servo1.write(0);
  }
+
+ //servo 3 spin 180 degrees
 if (digitalRead(buttonPin3) == HIGH) {
   servo3.write(180);
  }else {
@@ -96,7 +65,7 @@ if (digitalRead(buttonPin3) == HIGH) {
  }
 
 
-
+//servo 4 spin 110 to 60 degrees
 if(digitalRead(buttonPin4) == HIGH) {
   servo4.write(110);
 }else{
@@ -104,6 +73,7 @@ if(digitalRead(buttonPin4) == HIGH) {
   servo4.write(60);
 }
 
+//servo 4 spin 150 to 60 degrees
 if(digitalRead(buttonPin5) == HIGH) {
   servo4.write(150);
   delay(500);
